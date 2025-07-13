@@ -1,27 +1,25 @@
-import { useState } from "react";
 import { MdCancel } from "react-icons/md"
-import { useDispatch } from "react-redux";
-import { removeItem } from "../utils/cartSlice";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { decrementQuantity, incrementQuantity, removeItem } from "../utils/cartSlice";
 
-const CartItem = ({ cartItem }) => {
-  const [quantity, setQuantity] = useState(1);
+
+const CartItem = ({ cartItem, index }) => {
+
+  const quant = useSelector((store) => store.cart.items[index].quantity);
 
   const dispatch = useDispatch();
-
-  const handleDelete = (id) => {
-    dispatch(removeItem(id))
-    toast.info("Deleted!",{
-      position: 'top-center',
-      autoClose: 1000,
-      pauseOnHover: false
-    })
+  const handleDelete = (item) => {
+    dispatch(removeItem(item))
   }
 
-  const handleQuantity = (e)=>{
-    let value = e.target.value;
-    if (value >= 1 && value <= cartItem.stock)
-    setQuantity(e.target.value);
+  const increment = (item) => {
+    // setQuantity((c)=>c+1);
+    dispatch(incrementQuantity(item))
+  }
+
+  const decrement = (item) => {
+    // setQuantity((c)=>c-1);
+    dispatch(decrementQuantity(item))
   }
 
   return (
@@ -37,12 +35,20 @@ const CartItem = ({ cartItem }) => {
       </td>
       <td className="total">${cartItem.price}</td>
       <td className="quantity">
-        <input type="number" value={quantity} max={10} onChange={(e) => handleQuantity(e)} min={'1'} />
+        <div>
+          <button onClick={() => decrement(cartItem) }>-</button>
+          <p>{quant}</p>
+          <button onClick={() => increment(cartItem)}>+</button>
+        </div>
+
+
       </td>
-      <td>{Number(cartItem.price * quantity).toFixed(2)}</td>
       <td>
-        <button  onClick={()=>handleDelete(cartItem.id)}>
-          <MdCancel id="remove"  />
+        {Number(cartItem.price * quant).toFixed(2)}
+      </td>
+      <td>
+        <button onClick={() => handleDelete(cartItem)}>
+          <MdCancel id="remove" />
         </button>
       </td>
     </tr>

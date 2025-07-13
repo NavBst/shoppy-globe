@@ -4,6 +4,8 @@ import "./app.css"
 import { Provider } from "react-redux"
 import appStore from "./utils/appStore"
 import { ToastContainer } from "react-toastify"
+import { Suspense } from "react"
+import Loading from "./components/loading/Loading"
 
 
 const App = () => {
@@ -11,9 +13,11 @@ const App = () => {
     <Provider store={appStore}>
       <Header />
       <main>
+        <Suspense fallback={<Loading/>}>
           <Outlet />
+        </Suspense>
       </main>
-      <ToastContainer theme="colored"/>
+      <ToastContainer theme="colored" />
     </Provider>
   )
 }

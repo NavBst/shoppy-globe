@@ -7,7 +7,9 @@ const Header = () => {
   return (
     <header>
       <div className="inner">
-        <div id="logo"></div>
+        <div id="logo">
+          ShoppyGlobe
+        </div>
         <nav>
           <ul>
             <li>

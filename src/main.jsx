@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client'
+import {lazy, React} from 'react'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ProductDetails from './components/ProductDetails.jsx'
-import ProductList from './components/ProductList.jsx'
-import Cart from './components/Cart.jsx'
 import NotFound from './components/error/NotFound.jsx'
+const ProductList = lazy(() => import('./components/ProductList.jsx'));
+const ProductDetails = lazy(() => import('./components/ProductDetails.jsx'));
+const Cart = lazy(() => import('./components/Cart.jsx'));
 
 
 const routes = createBrowserRouter([
@@ -19,13 +20,13 @@ const routes = createBrowserRouter([
         element:<ProductList />
       },
       {
-        path: "/product",
-        element: <ProductDetails />
-      },
-      {
         path: "/cart",
         element: <Cart />
       },
+      {
+        path: "/product/:id",
+        element: <ProductDetails/>
+      }
     ]
   }
 ])
