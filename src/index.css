@@ -1,0 +1,261 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Outfit", sans-serif;
+    transition: all 0.3s;
+}
+
+.inner {
+    max-width: 1120px;
+    margin: 0px auto;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+header {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    background: rgba(159, 159, 159, 0.416);
+    width: 100%;
+    padding: 16px 0px;
+    height: auto;
+    box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.4);
+    margin-bottom: 12px;
+    backdrop-filter: blur(18px);
+    z-index: 99;
+}
+
+header .inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    width: 30%;
+    height: 100%;
+    margin: 4px 0px;
+}
+
+nav {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav ul {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-item {
+    color: rgb(0, 0, 0);
+    position: relative;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.nav-item:active {
+    color: rgba(0, 0, 0, 0.4)
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0%;
+    height: 2px;
+    width: 0%;
+    background-color: rgb(215, 213, 213);
+    border-radius: 20%;
+    transition: all 0.3s;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    left: 0%;
+}
+
+tr button{
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0px;
+}
+
+#remove{
+    font-size: 1.4rem;
+    color: rgba(193, 36, 36, 0.84);
+}
+
+tr button:active{
+    transform: scale(0.9);
+}
+
+
+/* ****************************************product list******************************** */
+
+.product-list-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 30px;
+}
+
+article {
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+article:hover {
+    background: rgba(240, 239, 239, 0.4);
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+}
+
+article:hover img {
+    filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+article p {
+    font-size: 0.8rem;
+    margin: 4px 0px;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0px;
+}
+
+/* *****************************Cart********************************** */
+#cart {
+    display: flex;
+    justify-content: space-between;
+    gap: 3%;
+}
+
+#cart-head{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#cart-head h3{
+    font-size: 2rem;
+    margin: 10px 10px 30px 0px;
+}
+
+#cart-list {
+    flex-basis: 70%;
+    /* background-color: azure; */
+}
+
+#cart-list h4 {
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid rgb(215, 215, 215);
+    z-index: 11;
+}
+
+table tr td,
+table th {
+    text-align: left;
+}
+
+th {
+    padding: 0.8rem 0rem;
+}
+
+th:nth-child(1), td:nth-child(1){
+    width: 300px;
+}
+
+th:nth-child(5), td:nth-child(5){
+    width: 30px;
+}
+
+td {
+    padding: 1.2rem 0rem;
+}
+
+.product {
+    column-span: 2;
+    display: flex;
+}
+
+#price {
+    flex-basis: 20%;
+    height: 55vh;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) ;
+}
+
+#price h4{
+    padding: 14px 0px;
+    font-size: 1.4rem;
+    border-bottom: 0.1px solid rgb(213, 212, 212);
+}
+
+#price div{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin: 14px 0px;
+}
+
+#price>div:nth-child(5){
+    border-bottom: 0.1px solid rgb(213, 212, 212);
+    padding-bottom: 15px;
+}
+
+#price>div:nth-child(6) p{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+#price button{
+    display: block;
+    background-color: rgb(0, 183, 255);
+    color: white;
+    padding: 12px 24px;
+    margin: 24px auto;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#price button:active{
+    scale: 0.95;
+}
+
+#price div span:last-child{
+    font-weight: bold;
+}
+
+
+/* ***********************************8******************************* */
+
+
