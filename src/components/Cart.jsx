@@ -11,16 +11,21 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const items = useSelector((store) => store.cart.items);
   let sum = 0;
-  for(let item of items){
+  for (let item of items) {
     sum = sum + Number(item.quantity) * Number(item.price);
   }
-  
-  useEffect(()=>{ // handling total and subtotal cost
-     setSubtotal((sum).toFixed(2));  
-     let discount = subtotal - (subtotal*25/100);
-     discount = discount.toFixed(2);
-     setTotal(discount);
-  },[total, items])
+
+  useEffect(() => { // handling total and subtotal cost
+    setSubtotal((sum).toFixed(2));
+    if (subtotal !== 0) {
+      let discount = subtotal - (subtotal * 25 / 100);
+      discount = discount.toFixed(2);
+      setTotal(discount);
+    }else{
+      setTotal(subtotal)
+    }
+    
+  }, [items])
 
   const clearDispatch = useDispatch();
 
@@ -70,7 +75,7 @@ const Cart = () => {
               <span>Tax</span> <span>-</span>
             </div>
             <div>
-              <p>Total</p> <p>{subtotal===0 ? 0 :total}</p>
+              <p>Total</p> <p>{subtotal === 0 ? 0 : total}</p>
             </div>
             <button>Checkout</button>
           </div>
